@@ -19,14 +19,14 @@ jobs:
           echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
           echo "AWS_DEFAULT_REGION=${{ secrets.AWS_DEFAULT_REGION }}" >> $GITHUB_ENV
 
-      - name: Change directory
-        run: cd terraform/aws
-
       - name: Terraform Init
         run: terraform init
+        working-directory: terraform/aws
 
       - name: Terraform Plan
         run: terraform plan
+        working-directory: terraform/aws
 
       - name: Terraform Apply
         run: terraform apply -auto-approve
+        working-directory: terraform/aws
