@@ -1,5 +1,5 @@
-resource "aws_ecr_repository" "bokeh_user_ecr" {
-  name                 = "bokeh-user-ecr"
+resource "aws_ecr_repository" "bokeh-user_service" {
+  name                 = "bokeh-user_service"
   image_tag_mutability = "MUTABLE"
 
   image_scanning_configuration {
@@ -7,12 +7,12 @@ resource "aws_ecr_repository" "bokeh_user_ecr" {
   }
 
   tags = {
-    Name = "bokeh-user-ecr"
+    Name = "bokeh-user_service"
   }
 }
 
-resource "aws_ecr_repository" "bokeh_post_ecr" {
-  name                 = "bokeh-post-ecr"
+resource "aws_ecr_repository" "bokeh-post_service" {
+  name                 = "bokeh-post_service"
   image_tag_mutability = "MUTABLE"
 
   image_scanning_configuration {
@@ -20,6 +20,6 @@ resource "aws_ecr_repository" "bokeh_post_ecr" {
   }
 
   tags = {
-    Name = "bokeh-post-ecr"
+    Name = "bokeh-post_service"
   }
 }
