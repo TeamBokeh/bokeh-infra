@@ -1,0 +1,31 @@
+project_name: bokeh
+namespace: default
+user_service:
+  name: user-service
+  namespace: default
+  gateway:
+    uri_prefix: /api/users/
+  deployment:
+    replicas: 1
+    image: public.ecr.aws/a3r8v0w0/bokeh-user_service
+    container_port: 8000
+  service:
+    port: 8000
+
+post_service:
+  name: post-service
+  namespace: default
+  gateway:
+    uri_prefix: /api/posts/
+  deployment:
+    replicas: 1
+    image: public.ecr.aws/a3r8v0w0/bokeh-post_service
+    container_port: 8000
+  service:
+    port: 8000
+
+argocd_service:
+  name: argocd-server
+  namespace: argocd
+  gateway:
+    uri_prefix: /argocd/

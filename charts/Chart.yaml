@@ -1,0 +1,6 @@
+apiVersion: v2
+name: bokeh-server
+description: A Helm chart for Bokeh Server Kubernetes deployment
+type: application
+version: 0.1.0
+appVersion: "1.16.0"

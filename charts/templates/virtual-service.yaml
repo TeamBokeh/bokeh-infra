@@ -1,0 +1,44 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ .Values.project_name }}-virtual-service
+  namespace: {{ .Values.namespace }}
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - {{ .Values.project_name }}-gateway
+  http:
+    - name: {{ .Values.user_service.name }}
+      match:
+        - uri:
+            prefix: {{ .Values.user_service.gateway.uri_prefix }}
+      rewrite:
+        uri: /
+      route:
+        - destination:
+            host: {{ .Values.user_service.name }}
+            port:
+              number: {{ .Values.user_service.service.port }}
+    - name: {{ .Values.post_service.name }}
+      match:
+        - uri:
+            prefix: {{ .Values.post_service.gateway.uri_prefix }}
+      rewrite:
+        uri: /
+      route:
+        - destination:
+            host: {{ .Values.post_service.name }}
+            port:
+              number: {{ .Values.post_service.service.port }}
+    - name: argocd
+      match:
+        - uri:
+            prefix: /argo
+      rewrite:
+        uri: /
+      route:
+        - destination:
+            host: argocd-server.argocd.svc.cluster.local
+            port:
+              number: 80
