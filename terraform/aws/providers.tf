@@ -9,6 +9,11 @@ provider "aws" {
   region = var.aws_region
 }
 
+provider "aws" {
+  alias = "us-east-1"
+  region = "us-east-1"
+}
+
 data "aws_availability_zones" "available" {}
 
 # Not required: currently used in conjunction with using
