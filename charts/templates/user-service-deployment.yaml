@@ -18,16 +18,3 @@ spec:
           image: {{ .Values.user_service.deployment.image }}
           ports:
             - containerPort: {{ .Values.user_service.deployment.container_port }}
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: {{ .Values.user_service.name }}
-  namespace: {{ .Values.user_service.namespace }}
-spec:
-  selector:
-    app: {{ .Values.user_service.name }}
-  ports:
-    - protocol: TCP
-      port: {{ .Values.user_service.service.port }}
-      targetPort: {{ .Values.user_service.deployment.container_port }}

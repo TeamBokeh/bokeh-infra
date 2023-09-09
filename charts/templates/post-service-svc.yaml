@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.post_service.name }}
+  namespace: {{ .Values.post_service.namespace }}
+spec:
+  selector:
+    app: {{ .Values.post_service.name }}
+  ports:
+    - protocol: TCP
+      port: {{ .Values.post_service.service.port }}
+      targetPort: {{ .Values.post_service.deployment.container_port }}
