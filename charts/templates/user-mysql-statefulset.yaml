@@ -25,5 +25,5 @@ spec:
               value: {{ .Values.user_mysql.database }}
             - name: MYSQL_USERNAME
               value: {{ .Values.user_mysql.username }}
-            - name: MYSQL_USER_PASSWORD
+            - name: MYSQL_ROOT_PASSWORD
               value: {{ .Values.user_mysql.password }}
