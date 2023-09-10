@@ -15,16 +15,15 @@ user_service:
 user_mysql:
   name: user-mysql
   namespace: default
-  deployment:
+  statefulset:
     replicas: 1
     image: mysql:8.0.34
     container_port: 3306
   service:
     port: 3306
   database: user_db
-  secret:
-    name: mysql-root-pass
-    key: password
+  username: root
+  password: root
 
 post_service:
   name: post-service

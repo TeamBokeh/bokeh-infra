@@ -1,12 +1,12 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ .Values.user_mysql.name }}
   labels:
     app: {{ .Values.user_mysql.name }}
   namespace: {{ .Values.user_mysql.namespace }}
 spec:
-  replicas: {{ .Values.user_mysql.deployment.replicas }}
+  replicas: {{ .Values.user_mysql.statefulset.replicas }}
   selector:
     matchLabels:
       app: {{ .Values.user_mysql.name }}
@@ -17,14 +17,13 @@ spec:
     spec:
       containers:
         - name: {{ .Values.user_mysql.name }}
-          image: {{ .Values.user_mysql.deployment.image }}
+          image: {{ .Values.user_mysql.statefulset.image }}
           ports:
-            - containerPort: {{ .Values.user_mysql.deployment.container_port }}
+            - containerPort: {{ .Values.user_mysql.statefulset.container_port }}
           env:
-            - name: MYSQL_DATABASE
+            - name: MYSQL_DATABASE_NAME
               value: {{ .Values.user_mysql.database }}
-            - name: MYSQL_ROOT_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.user_mysql.secret.name }}
-                  key: {{ .Values.user_mysql.secret.key }}
+            - name: MYSQL_USERNAME
+              value: {{ .Values.user_mysql.username }}
+            - name: MYSQL_USER_PASSWORD
+              value: {{ .Values.user_mysql.password }}

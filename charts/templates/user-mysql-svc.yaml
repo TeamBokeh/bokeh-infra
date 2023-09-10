@@ -2,16 +2,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ .Values.user_mysql.name }}
-  labels:
-    app: {{ .Values.user_mysql.name }}
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-    release: "{{ .Release.Name }}"
-    heritage: "{{ .Release.Service }}"
-  namespace: {{ .Values.user_mysql.namespace }}
 spec:
   selector:
     app: {{ .Values.user_mysql.name }}
   ports:
     - protocol: TCP
       port: {{ .Values.user_mysql.service.port }}
-      targetPort: {{ .Values.user_mysql.deployment.container_port }}
+      targetPort: {{ .Values.user_mysql.statefulset.container_port }}
