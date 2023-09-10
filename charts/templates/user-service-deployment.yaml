@@ -21,3 +21,11 @@ spec:
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: {{ .Values.user_service.deployment.profile }}
+            - name: DB_HOST
+              value: {{ .Values.user_mysql.name }}
+            - name: DB_PORT
+              value: "{{ .Values.user_mysql.service.port }}"
+            - name: DB_USERNAME
+              value: {{ .Values.user_mysql.username }}
+            - name: DB_PASSWORD
+              value: {{ .Values.user_mysql.password }}
