@@ -18,3 +18,6 @@ spec:
           image: {{ .Values.user_service.deployment.image }}
           ports:
             - containerPort: {{ .Values.user_service.deployment.container_port }}
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: {{ .Values.user_service.deployment.profile }}
