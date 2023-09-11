@@ -1,10 +1,7 @@
 # Bokeh Infra
 
-## Infra Architecture
+GitOps repository for Bokeh.
 
-...
-
-## Dependency
-- helm
-- terraform
-  - https://app.terraform.io/app/TeamBokeh/workspaces/bokeh-infra/
+- Kubernetes
+- Helm
+- Terraform
