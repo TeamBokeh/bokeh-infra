@@ -31,3 +31,7 @@ spec:
               value: {{ .Values.user_mysql.username }}
             - name: DB_PASSWORD
               value: {{ .Values.user_mysql.password }}
+            - name: REDIS_HOST
+              value: {{ .Values.user_redis.name }}
+            - name: REDIS_PORT
+              value: "{{ .Values.user_redis.service.port }}"

@@ -26,6 +26,16 @@ user_mysql:
   username: root
   password: root
 
+user_redis:
+  name: user-redis
+  namespace: default
+  statefulset:
+    replicas: 1
+    image: redis:7.2.1
+    container_port: 6379
+  service:
+    port: 6379
+
 post_service:
   name: post-service
   namespace: default

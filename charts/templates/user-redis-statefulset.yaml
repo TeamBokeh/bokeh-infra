@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Values.user_redis.name }}
+  labels:
+    app: {{ .Values.user_redis.name }}
+  namespace: {{ .Values.user_redis.namespace }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.user_redis.name }}
+  replicas: {{ .Values.user_redis.statefulset.replicas }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.user_redis.name }}
+    spec:
+      containers:
+        - name: {{ .Values.user_redis.name }}
+          image: {{ .Values.user_redis.statefulset.image }}
+          ports:
+            - containerPort: {{ .Values.user_redis.statefulset.container_port }}
