@@ -25,6 +25,8 @@ spec:
               value: {{ .Values.user_mysql.name }}
             - name: DB_PORT
               value: "{{ .Values.user_mysql.service.port }}"
+            - name: DB_DATABASE
+              value: {{ .Values.user_mysql.db_name }}
             - name: DB_USERNAME
               value: {{ .Values.user_mysql.username }}
             - name: DB_PASSWORD

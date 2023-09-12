@@ -21,8 +21,8 @@ spec:
           ports:
             - containerPort: {{ .Values.user_mysql.statefulset.container_port }}
           env:
-            - name: MYSQL_DATABASE_NAME
-              value: {{ .Values.user_mysql.database }}
+            - name: MYSQL_DATABASE
+              value: {{ .Values.user_mysql.db_name }}
             - name: MYSQL_USERNAME
               value: {{ .Values.user_mysql.username }}
             - name: MYSQL_ROOT_PASSWORD

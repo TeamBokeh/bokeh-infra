@@ -22,7 +22,7 @@ user_mysql:
     container_port: 3306
   service:
     port: 3306
-  database: user_db
+  db_name: user_db
   username: root
   password: root
 
