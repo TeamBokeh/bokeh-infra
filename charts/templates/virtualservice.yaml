@@ -31,14 +31,3 @@ spec:
             host: {{ .Values.post_service.name }}
             port:
               number: {{ .Values.post_service.service.port }}
-    - name: argocd
-      match:
-        - uri:
-            prefix: /argo
-      rewrite:
-        uri: /
-      route:
-        - destination:
-            host: argocd-server.argocd.svc.cluster.local
-            port:
-              number: 80
