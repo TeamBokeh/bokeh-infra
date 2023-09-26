@@ -1,11 +1,11 @@
-resource "aws_ssm_parameter" "bokeh-user_service-ecr_url" {
-  name  = "bokeh-user_service-ecr_url"
+resource "aws_ssm_parameter" "bokeh-user_api-ecr_url" {
+  name  = "bokeh-user_api-ecr_url"
   type  = "String"
-  value = aws_ecrpublic_repository.bokeh-user_service.repository_uri
+  value = aws_ecrpublic_repository.bokeh-user_api.repository_uri
 }
 
-resource "aws_ssm_parameter" "bokeh-post_service_ecr_url" {
-  name  = "bokeh-post_service-ecr_url"
+resource "aws_ssm_parameter" "bokeh-post_api-ecr_url" {
+  name  = "bokeh-post_api-ecr_url"
   type  = "String"
-  value = aws_ecrpublic_repository.bokeh-post_service.repository_uri
+  value = aws_ecrpublic_repository.bokeh-post_api.repository_uri
 }
