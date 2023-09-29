@@ -1,15 +1,15 @@
 project_name: bokeh
 namespace: default
-user_service:
+user_api_rest:
   name: user-service
   namespace: default
   gateway:
     uri_prefix: /api/users/
   deployment:
     replicas: 1
-    image: public.ecr.aws/a3r8v0w0/bokeh-user_service
+    image: public.ecr.aws/a3r8v0w0/bokeh-user_api_rest
     container_port: 8080
-    profile: prod
+    profile: dev
   service:
     port: 8080
 
@@ -36,15 +36,16 @@ user_redis:
   service:
     port: 6379
 
-post_service:
+post_api_rest:
   name: post-service
   namespace: default
   gateway:
     uri_prefix: /api/posts/
   deployment:
     replicas: 1
-    image: public.ecr.aws/a3r8v0w0/bokeh-post_service
+    image: public.ecr.aws/a3r8v0w0/bokeh-post_api_rest
     container_port: 8080
+    profile: dev
   service:
     port: 8080
 

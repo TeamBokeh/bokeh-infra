@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.post_api_rest.name }}
+  namespace: {{ .Values.post_api_rest.namespace }}
+spec:
+  selector:
+    app: {{ .Values.post_api_rest.name }}
+  ports:
+    - protocol: TCP
+      port: {{ .Values.post_api_rest.service.port }}
+      targetPort: {{ .Values.post_api_rest.deployment.container_port }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.post_api_rest.name }}
+  namespace: {{ .Values.post_api_rest.namespace }}
+spec:
+  replicas: {{ .Values.post_api_rest.deployment.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.post_api_rest.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.post_api_rest.name }}
+    spec:
+      containers:
+        - name: {{ .Values.post_api_rest.name }}
+          image: {{ .Values.post_api_rest.deployment.image }}
+          ports:
+            - containerPort: {{ .Values.post_api_rest.deployment.container_port }}

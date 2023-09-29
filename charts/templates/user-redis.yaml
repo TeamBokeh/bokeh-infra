@@ -1,3 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.user_redis.name }}
+spec:
+  selector:
+    app: {{ .Values.user_redis.name }}
+  ports:
+    - protocol: TCP
+      port: {{ .Values.user_redis.service.port }}
+      targetPort: {{ .Values.user_redis.statefulset.container_port }}
+---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:

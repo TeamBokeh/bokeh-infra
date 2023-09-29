@@ -9,25 +9,25 @@ spec:
   gateways:
     - {{ .Values.project_name }}-gateway
   http:
-    - name: {{ .Values.user_service.name }}
+    - name: {{ .Values.user_api_rest.name }}
       match:
         - uri:
-            prefix: {{ .Values.user_service.gateway.uri_prefix }}
+            prefix: {{ .Values.user_api_rest.gateway.uri_prefix }}
       rewrite:
         uri: /
       route:
         - destination:
-            host: {{ .Values.user_service.name }}
+            host: {{ .Values.user_api_rest.name }}
             port:
-              number: {{ .Values.user_service.service.port }}
-    - name: {{ .Values.post_service.name }}
+              number: {{ .Values.user_api_rest.service.port }}
+    - name: {{ .Values.post_api_rest.name }}
       match:
         - uri:
-            prefix: {{ .Values.post_service.gateway.uri_prefix }}
+            prefix: {{ .Values.post_api_rest.gateway.uri_prefix }}
       rewrite:
         uri: /
       route:
         - destination:
-            host: {{ .Values.post_service.name }}
+            host: {{ .Values.post_api_rest.name }}
             port:
-              number: {{ .Values.post_service.service.port }}
+              number: {{ .Values.post_api_rest.service.port }}
